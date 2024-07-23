@@ -1,0 +1,51 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Belajar React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- react -->
+    <script type="text/babel">
+      const container = document.getElementById("root");
+      const root = ReactDOM.createRoot(container);
+
+      function Header({ author }) {
+        return <h1>Belajar React Bareng {author ? author : "WPU"} 🚀</h1>;
+      }
+      function HomePage() {
+        // Component & Props
+        const students = ["Sandhika Galih", "Doddy", "Erik"];
+        const [likes, setLikes] = React.useState(0);
+
+        // State
+        function handleClick() {
+          setLikes(likes + 1);
+        }
+
+        return (
+          <>
+            <Header author="Naufal Harits" />
+            <Header author="Sandhika Galih" />
+            <Header />
+            <ul>
+              {students.map((student) => (
+                <li key={student}>{student}</li>
+              ))}
+            </ul>
+            <button onClick={handleClick}>Like({likes})</button>
+          </>
+        );
+      }
+
+      root.render(<HomePage />);
+    </script>
+  </body>
+</html>
